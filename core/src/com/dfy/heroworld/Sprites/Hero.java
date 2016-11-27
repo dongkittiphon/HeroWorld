@@ -18,13 +18,13 @@ public class Hero extends Sprite {
 
     public void defineHero(){
         BodyDef bdef = new BodyDef();
-        bdef.position.set(32, 32);
+        bdef.position.set(32/ HeroWorld.PPM, 32/ HeroWorld.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2bobdy = world.createBody(bdef);
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(5);
+        shape.setRadius(5/ HeroWorld.PPM);
         fdef.shape = shape;
         b2bobdy.createFixture(fdef);
 
