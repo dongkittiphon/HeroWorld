@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.dfy.heroworld.HeroWorld;
 import com.sun.org.apache.xpath.internal.operations.String;
 import javafx.stage.Stage;
 
@@ -26,7 +27,7 @@ public class Hud {
     public Hud(SpriteBatch sb){
         life = 3;
 
-        viewport = new FitViewport(400, 200, new OrthographicCamera());
+        viewport = new FitViewport(HeroWorld.V_WIDTH, HeroWorld.V_HEIGHT, new OrthographicCamera());
         stage = new com.badlogic.gdx.scenes.scene2d.Stage(viewport, sb);
 
         Table table = new Table();
