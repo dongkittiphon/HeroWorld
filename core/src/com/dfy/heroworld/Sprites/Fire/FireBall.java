@@ -16,8 +16,12 @@ import com.dfy.heroworld.Sprites.Hero;
 public class FireBall extends Sprite {
     PlayScreen screen;
     World world;
+
+
     Array<TextureRegion> frames;
     Animation fireAnimation;
+
+
     float stateTime;
     boolean destroyed;
     boolean setToDestroy;
@@ -29,6 +33,8 @@ public class FireBall extends Sprite {
         this.screen = screen;
         this.world = screen.getWorld();
         frames = new Array<TextureRegion>();
+
+
         for(int i = 0; i < 4; i++){
             frames.add(new TextureRegion(screen.getAtlas().findRegion("boy"), i * 8, 0, 8, 8));
         }
@@ -40,8 +46,8 @@ public class FireBall extends Sprite {
 
     public void defineFireBall(){
         BodyDef bdef = new BodyDef();
-        bdef.position.set(fireRight ? getX() + 12 /HeroWorld.PPM : getX() - 12 /HeroWorld.PPM, getY());
-        bdef.type = BodyDef.BodyType.DynamicBody;
+        bdef.position.set(fireRight ? getX() + 9 /HeroWorld.PPM : getX() - 9 /HeroWorld.PPM, getY());
+        bdef.type = BodyDef.BodyType.KinematicBody;
         if(!world.isLocked())
             b2body = world.createBody(bdef);
 
@@ -49,11 +55,17 @@ public class FireBall extends Sprite {
         CircleShape shape = new CircleShape();
         shape.setRadius(3 / HeroWorld.PPM);
 
+        fdef.filter.categoryBits = HeroWorld.FIREBALL_BIT;
+        fdef.filter.maskBits = HeroWorld.GROUND_BIT |
+                HeroWorld.BRICK_BIT |
+                HeroWorld.ENEMY_BIT |
+                HeroWorld.OBJECT_BIT;
 
         fdef.shape = shape;
-
         b2body.createFixture(fdef).setUserData(this);
-        b2body.setLinearVelocity((fireRight ? 10 :-10), 0);
+        //b2body.setAngularVelocity((fireRight ? 3.6f :-3.6f));
+       // b2body.applyLinearImpulse(new Vector2((fireRight ? 3.6f :-3.6f), 0), b2body.getWorldCenter(), true);
+        b2body.setLinearVelocity((fireRight ? 5f :-5f), 0);
     }
 
     public void update(float dt){
@@ -64,8 +76,7 @@ public class FireBall extends Sprite {
             world.destroyBody(b2body);
             destroyed = true;
         }
-        if(b2body.getLinearVelocity().y > 2f)
-            b2body.setLinearVelocity(b2body.getLinearVelocity().x, 2f);
+
         if((fireRight && b2body.getLinearVelocity().x < 0) || (!fireRight && b2body.getLinearVelocity().x > 0))
             setToDestroy();
     }

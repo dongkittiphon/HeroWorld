@@ -15,14 +15,17 @@ import com.dfy.heroworld.Sprites.Fire.FireBall;
  */
 public class Hero extends Sprite {
     public enum State{FALLING, JUMPING, STANDING, RUNNING, DIE};
+
     public State currentState;
     public State previousState;
-
     public World world;
     public Body b2body;
+
+
     private TextureRegion heroStand;
     private Animation heroRun;
-    private Animation heroJump;
+   // private Animation heroJump;
+
     private float stateTimer;
     private boolean runningRight;
     private boolean marioIsDead;
@@ -60,6 +63,12 @@ public class Hero extends Sprite {
     public void update(float dt){
         setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight()/2);
         setRegion(getFrame(dt));
+
+        for(FireBall  ball : fireballs) {
+            ball.update(dt);
+            if(ball.isDestroyed())
+                fireballs.removeValue(ball, true);
+        }
     }
 
     public TextureRegion getFrame(float dt){
@@ -104,6 +113,15 @@ public class Hero extends Sprite {
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
         shape.setRadius(10/ HeroWorld.PPM);
+
+        fdef.filter.categoryBits = HeroWorld.HERO_BIT;
+        fdef.filter.maskBits = HeroWorld.GROUND_BIT |
+                HeroWorld.BRICK_BIT |
+                HeroWorld.OBJECT_BIT |
+                HeroWorld.HERO_BIT |
+                HeroWorld.ITEM_BIT |
+                HeroWorld.ENEMY_BIT;
+
         fdef.shape = shape;
         b2body.createFixture(fdef);
 
