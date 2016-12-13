@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="36" tilewidth="8" tileheight="8" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="36" tilewidth="8" tileheight="8" nextobjectid="8">
  <tileset firstgid="1" name="bg222" tilewidth="8" tileheight="8" tilecount="1800" columns="50">
   <image source="bg222.jpg" width="400" height="288"/>
  </tileset>
@@ -86,7 +86,16 @@
 1803,0,1803,0,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,1803,0
 </data>
  </layer>
- <objectgroup name="bricks"/>
- <objectgroup name="ground"/>
+ <objectgroup name="bricks">
+  <object id="1" x="224" y="80.6667" width="175.333" height="15.3333"/>
+  <object id="2" x="0.666667" y="56.6667" width="126.667" height="15.3333"/>
+  <object id="3" x="104" y="128.667" width="63.3333" height="16"/>
+  <object id="4" x="0.333333" y="208" width="144.333" height="15.6667"/>
+  <object id="5" x="239.667" y="168" width="160.333" height="16.3333"/>
+  <object id="6" x="288" y="232" width="112.667" height="16.3333"/>
+ </objectgroup>
+ <objectgroup name="ground">
+  <object id="7" x="0" y="271.333" width="400" height="17.3333"/>
+ </objectgroup>
  <objectgroup name="Object Layer 3"/>
 </map>
