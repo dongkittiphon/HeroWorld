@@ -6,9 +6,6 @@
  <tileset firstgid="1801" name="tileset_gutter" tilewidth="16" tileheight="16" spacing="2" tilecount="924" columns="33">
   <image source="tileset_gutter.png" width="594" height="504"/>
  </tileset>
- <tileset firstgid="2725" name="Blue" tilewidth="8" tileheight="8" spacing="2" margin="2" tilecount="200" columns="40">
-  <image source="Blue.png" width="400" height="50"/>
- </tileset>
  <layer name="bg" width="50" height="36">
   <data encoding="csv">
 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,
