@@ -53,7 +53,7 @@ public class PlayScreen implements Screen {
         hud = new Hud(game.batch);
 
         maploader = new TmxMapLoader();
-        map = maploader.load("level0.tmx");
+        map = maploader.load("level2.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1/ HeroWorld.PPM);
 
         gamecam.position.set(gamePort.getWorldWidth()/ 2 , gamePort.getWorldHeight() / 2 ,0);
@@ -95,7 +95,7 @@ public class PlayScreen implements Screen {
 
         world.step(1/60f, 6, 2);
         player.update(dt);
-        gamecam.position.x = player.b2body.getPosition().x;
+        //gamecam.position.x = player.b2body.getPosition().x;
         //gamecam.position.y = player.b2body.getPosition().y;
 
         gamecam.update();

@@ -10,7 +10,7 @@ import com.dfy.heroworld.Screens.PlayScreen;
 
 public class HeroWorld extends Game {
 	public static final int V_WIDTH = 400;
-	public static final int V_HEIGHT = 208;
+	public static final int V_HEIGHT = 288;
 	public static final float PPM = 100;
 
 	public static final short NOTHING_BIT = 0;
