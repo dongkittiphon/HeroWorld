@@ -14,8 +14,8 @@ import javafx.animation.Animation;
 /**
  * Created by Asus on 13/12/2559.
  */
-public class mouse extends Enemy{
-    private float statetime;
+  /* public class mouse extends Enemy{
+ private float statetime;
     private Animation walk;
     private Array<TextureRegion>frame;
 
@@ -63,6 +63,6 @@ public class mouse extends Enemy{
         setRegion(walk.getkeyframe(statetime));
         b2body.setLinearVelocity(velocity);
     }
-}
+}*/
 
 
