@@ -14,6 +14,13 @@ import java.awt.event.ContainerListener;
  * Created by _iDong on 12/14/2016.
  */
 public class WorldContactListener implements ContactListener{
+
+    public static boolean hit = false;
+
+    public static boolean isHit(){
+        return hit;
+    }
+
     @Override
     public void beginContact(Contact contact) {
         Fixture fixA = contact.getFixtureA();
@@ -29,6 +36,10 @@ public class WorldContactListener implements ContactListener{
                     ((Enemy)fixB.getUserData()).reverseVelocity(true,false);
                 break;
             case HeroWorld.HERO_BIT | HeroWorld.ENEMY_BIT:
+                if (fixA.getFilterData().categoryBits==HeroWorld.ENEMY_BIT)
+                    ((Enemy)fixA.getUserData()).reverseVelocity(true,false);
+                else
+                    ((Enemy)fixB.getUserData()).reverseVelocity(true,false);
                 Hud.setLife(-1);
                 Hero.die();
                 break;
@@ -44,13 +55,11 @@ public class WorldContactListener implements ContactListener{
                     ((Item)fixB.getUserData()).use((Hero) fixA.getUserData());
                 break;
             case HeroWorld.FIREBALL_BIT | HeroWorld.ENEMY_BIT:
-                if(fixA.getFilterData().categoryBits == HeroWorld.ENEMY_BIT) {
-                    ((Enemy) fixA.getUserData()).hitByFireball((FireBall) fixB.getUserData());
-                    ((FireBall)fixB.getUserData()).setToDestroy();
-                }else{
-                    ((Enemy)fixB.getUserData()).hitByFireball((FireBall) fixA.getUserData());
-                    ((FireBall)fixA.getUserData()).setToDestroy();
-                }
+               /* if (fixA.getFilterData().categoryBits==HeroWorld.ENEMY_BIT)
+                    ((Enemy)fixA.getUserData()).use((Hero)fixB.getUserData());
+                else
+                    ((Enemy)fixB.getUserData()).use((Hero)fixA.getUserData());*/
+
                 break;
             case HeroWorld.ENEMY_BIT | HeroWorld.GROUND_BIT :
                 if(fixA.getFilterData().categoryBits == HeroWorld.ENEMY_BIT)
@@ -59,17 +68,21 @@ public class WorldContactListener implements ContactListener{
                     ((Enemy)fixB.getUserData()).reverseVelocity(true,false);
                 break;
         }
+
     }
 
     @Override
     public void endContact(Contact contact) {
+
     }
 
     @Override
     public void preSolve(Contact contact, Manifold oldManifold) {
+
     }
 
     @Override
     public void postSolve(Contact contact, ContactImpulse impulse) {
+
     }
 }

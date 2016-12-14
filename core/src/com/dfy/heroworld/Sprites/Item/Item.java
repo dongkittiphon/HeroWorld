@@ -25,9 +25,10 @@ public abstract class Item extends Sprite{
         setPosition(x, y);
         setBounds(getX(), getY(), 20 / HeroWorld.PPM, 20/ HeroWorld.PPM);
 
+        defineItem();
         todestroy = false;
         destroy = false;
-        defineItem();
+       // defineItem();
     }
 
     public abstract void defineItem();
