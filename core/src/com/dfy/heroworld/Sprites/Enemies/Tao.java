@@ -1,6 +1,7 @@
 package com.dfy.heroworld.Sprites.Enemies;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.utils.Array;
 import com.dfy.heroworld.HeroWorld;
 import com.dfy.heroworld.Screens.PlayScreen;
 import com.dfy.heroworld.Sprites.Fire.FireBall;
+import com.dfy.heroworld.Sprites.Hero;
 
 /**
  * Created by _iDong on 12/14/2016.
@@ -31,9 +33,12 @@ public class Tao extends Enemy {
         stateTime = 0;
         setBounds(getX(),getY(),20/ HeroWorld.PPM,20/HeroWorld.PPM);
         setToDestroy = false;
-       destroyed = false;
+        destroyed = false;
     }
-
+    public void draw(Batch batch){
+        if(!destroyed || stateTime < 1)
+            super.draw(batch);
+    }
     @Override
     protected void defineEnemy() {
         BodyDef bdef = new BodyDef();
@@ -84,10 +89,9 @@ public class Tao extends Enemy {
     }
     @Override
     public void hitByEnemy(Enemy enemy) {
-        setToDestroy = true;
+        reverseVelocity(true, false);
         //เสียงตาย
     }
-
 
     @Override
     public void reverseVelocity(boolean x, boolean y) {

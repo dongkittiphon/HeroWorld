@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 import com.dfy.heroworld.HeroWorld;
 import com.dfy.heroworld.Screens.PlayScreen;
 import com.dfy.heroworld.Sprites.Fire.FireBall;
+import com.dfy.heroworld.Sprites.Hero;
 
 /**
  * Created by Asus on 14/12/2559.

@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array;
 import com.dfy.heroworld.HeroWorld;
 import com.dfy.heroworld.Screens.PlayScreen;
 import com.dfy.heroworld.Sprites.Fire.FireBall;
+import com.dfy.heroworld.Sprites.Hero;
 //ยังไม่ได้เพิ่มในPlayscreen
 
 /**
@@ -87,7 +88,6 @@ public class robot extends  Enemy {
         setToDestroy = true;
         //เสียงตาย
     }
-
     @Override
     public void reverseVelocity(boolean x, boolean y) {
         super.reverseVelocity(x, y);
