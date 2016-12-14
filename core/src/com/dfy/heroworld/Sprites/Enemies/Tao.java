@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.utils.Array;
 import com.dfy.heroworld.HeroWorld;
+import com.dfy.heroworld.Scenes.Hud;
 import com.dfy.heroworld.Screens.PlayScreen;
 import com.dfy.heroworld.Sprites.Fire.FireBall;
 
@@ -78,7 +79,9 @@ public class Tao extends Enemy {
     }
 
     @Override
-    public void hitByFireball(FireBall fireBall) {
+    public void use(FireBall fireBall) {
+
+        Hud.addLife(-1);
         setToDestroy = true;
         //เสียงตาย
     }

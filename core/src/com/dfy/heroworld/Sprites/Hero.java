@@ -30,7 +30,7 @@ public class Hero extends Sprite {
     private TextureRegion heroStand;
     private TextureRegion heroDead;
     private Animation heroRun;
-   // private Animation heroJump;
+    private Animation heroJump;
 
     private float stateTimer;
     private boolean runningRight;

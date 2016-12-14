@@ -55,9 +55,13 @@ public class PlayScreen implements Screen{
         maploader = new TmxMapLoader();
         map = maploader.load("level1.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1/ HeroWorld.PPM);
-
         gamecam.position.set(gamePort.getWorldWidth()/ 2 , gamePort.getWorldHeight() / 2 ,0);
-
+//เพิ่มใหม่checkด้วย
+     /*   maploader = new TmxMapLoader();
+        map = maploader.load("level2.tmx");
+        renderer = new OrthogonalTiledMapRenderer(map, 1/ HeroWorld.PPM);
+        gamecam.position.set(gamePort.getWorldWidth()/ 2 , gamePort.getWorldHeight() / 2 ,0);
+*/
         world = new World(new Vector2(0, -10), true);
         b2dr = new Box2DDebugRenderer();
 
@@ -101,6 +105,12 @@ public class PlayScreen implements Screen{
         player.update(dt);
         //gamecam.position.x = player.b2body.getPosition().x;
         //gamecam.position.y = player.b2body.getPosition().y;
+        for (Enemy enemy:creator.getshell()){
+            enemy.update(dt);
+        }
+        for (Enemy enemy:creator.getmouse()){
+            enemy.update(dt);
+        }
         for( Enemy enemy : creator.getTao()) {
             enemy.update(dt);
             if(enemy.getX() < player.getX() + 224 / HeroWorld.PPM) {
@@ -129,6 +139,10 @@ public class PlayScreen implements Screen{
 
 
         for(Enemy enemy : creator.getTao())
+            enemy.draw(game.batch);
+        for(Enemy enemy : creator.getmouse())
+            enemy.draw(game.batch);
+        for(Enemy enemy : creator.getshell())
             enemy.draw(game.batch);
 
         game.batch.end();

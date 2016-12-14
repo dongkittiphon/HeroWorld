@@ -4,18 +4,15 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.scenes.scene2d.actions.TemporalAction;
 import com.badlogic.gdx.utils.Array;
 import com.dfy.heroworld.HeroWorld;
 import com.dfy.heroworld.Screens.PlayScreen;
 import com.dfy.heroworld.Sprites.Fire.FireBall;
-import com.dfy.heroworld.Sprites.Hero;
-import javafx.animation.Animation;
 
 /**
- * Created by Asus on 13/12/2559.
+ * Created by Asus on 14/12/2559.
  */
-    public class mouse extends Enemy{
+public class ufo extends  Enemy {
 
     private float stateTime;
     private com.badlogic.gdx.graphics.g2d.Animation walk;
@@ -23,11 +20,11 @@ import javafx.animation.Animation;
     private boolean setToDestroy;
     private boolean destroyed;
 
-    public mouse(PlayScreen screen, float x, float y) {
+    public ufo(PlayScreen screen, float x, float y) {
         super(screen, x, y);
         frames = new Array<TextureRegion>();
         for (int i = 0; i < 2; i++) {
-            frames.add(new TextureRegion(screen.getAtlas().findRegion("mouse"),i*200,0,200,100));
+            frames.add(new TextureRegion(screen.getAtlas().findRegion("ufo"),i*240,0,240,200));
         }
         walk = new com.badlogic.gdx.graphics.g2d.Animation(0.4f,frames);
         stateTime = 0;
@@ -69,7 +66,7 @@ import javafx.animation.Animation;
         if(setToDestroy && !destroyed){
             world.destroyBody(b2body);
             destroyed = true;
-            setRegion(new TextureRegion(screen.getAtlas().findRegion("mouse"), 1200, 0, 200, 96));
+            setRegion(new TextureRegion(screen.getAtlas().findRegion("ufo"),720 ,200, 240,200));
             stateTime = 0;
         }
         else if(!destroyed) {
@@ -90,7 +87,4 @@ import javafx.animation.Animation;
         super.reverseVelocity(x, y);
     }
 }
-
-
-
 
