@@ -32,6 +32,10 @@ public abstract class Enemy extends Sprite {
     public  abstract  void  update(float dt);
     public abstract void hitByFireball(FireBall fireBall);
 
+    public static void die(){
+        enemyIsdead = true;
+    }
+
 
     public void  reverseVelocity(boolean x,boolean y){
         if(x){

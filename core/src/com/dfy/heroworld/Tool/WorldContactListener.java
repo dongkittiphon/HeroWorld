@@ -49,7 +49,7 @@ public class WorldContactListener implements ContactListener{
                     ((Item)fixB.getUserData()).use((Hero) fixA.getUserData());
                 break;
             case HeroWorld.FIREBALL_BIT | HeroWorld.ENEMY_BIT:
-
+                    Enemy.die();
                 break;
         }
 

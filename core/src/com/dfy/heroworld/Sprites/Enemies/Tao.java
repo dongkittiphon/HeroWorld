@@ -1,6 +1,7 @@
 package com.dfy.heroworld.Sprites.Enemies;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
@@ -32,6 +33,12 @@ public class Tao extends Enemy {
         setBounds(getX(),getY(),20/ HeroWorld.PPM,20/HeroWorld.PPM);
         setToDestroy = false;
        destroyed = false;
+    }
+
+    public void drow(Batch batch){
+        if(!destroyed || stateTime < 1)
+            super.draw(batch);
+
     }
 
     @Override
