@@ -31,7 +31,6 @@ public class Hero extends Sprite {
     private TextureRegion heroStand;
     private TextureRegion heroDead;
     private Animation heroRun;
-    private Animation heroJump;
 
     private float stateTimer;
     private boolean runningRight;
@@ -55,10 +54,6 @@ public class Hero extends Sprite {
             frames.add(new TextureRegion(getTexture(),i * 100, 200,100 ,150 ));
         heroRun = new Animation(0.1f, frames);
         frames.clear();
-
-      //  for (int i = 4; i < 6; i++)
-       //     frames.add(new TextureRegion(getTexture(),i * 16, 10,16 ,16 ));
-        //heroJump = new Animation(0.1f, frames);
 
         heroStand = new TextureRegion(getTexture(), 600, 200,100,150);
         heroDead = new TextureRegion(getTexture(), 800, 200,100,150);

@@ -15,7 +15,7 @@ import javafx.animation.Animation;
 /**
  * Created by Asus on 13/12/2559.
  */
-    public class mouse extends Enemy{
+public class mouse extends Enemy{
 
     private float stateTime;
     private com.badlogic.gdx.graphics.g2d.Animation walk;

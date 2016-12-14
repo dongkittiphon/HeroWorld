@@ -71,9 +71,6 @@ public class PlayScreen implements Screen{
 
         player = new Hero(this);
 
-
-
-
     }
     public TextureAtlas getAtlas(){
         return atlas;
@@ -151,6 +148,13 @@ public class PlayScreen implements Screen{
 
     }
 
+    public TiledMap getMap(){
+        return map;
+    }
+    public World getWorld(){
+        return world;
+    }
+
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
@@ -180,11 +184,8 @@ public class PlayScreen implements Screen{
         hud.dispose();
 
     }
-    public TiledMap getMap() {
-        return map;
-    }
 
-    public World getWorld() {
-        return world;
+    public Hud getHud(){
+        return hud;
     }
 }

@@ -65,12 +65,12 @@ public class B2WorldCreator {
         mouse = new Array<mouse>();
         for(MapObject object : map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-           // mouse.add(new mouse(screen, rect.getX() / HeroWorld.PPM, rect.getY() / HeroWorld.PPM));
+            mouse.add(new mouse(screen, rect.getX() / HeroWorld.PPM, rect.getY() / HeroWorld.PPM));
         }
         shell = new Array<shell>();
         for(MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-           // shell.add(new shell(screen, rect.getX() / HeroWorld.PPM, rect.getY() / HeroWorld.PPM));
+            shell.add(new shell(screen, rect.getX() / HeroWorld.PPM, rect.getY() / HeroWorld.PPM));
         }
 
     }
