@@ -3,6 +3,7 @@ package com.dfy.heroworld.Tool;
 import com.badlogic.gdx.physics.box2d.*;
 import com.dfy.heroworld.HeroWorld;
 import com.dfy.heroworld.Sprites.Enemies.Enemy;
+import com.dfy.heroworld.Sprites.Enemies.Tao;
 import com.dfy.heroworld.Sprites.Fire.FireBall;
 import com.dfy.heroworld.Sprites.Hero;
 import com.dfy.heroworld.Sprites.Item.Item;
@@ -49,7 +50,19 @@ public class WorldContactListener implements ContactListener{
                     ((Item)fixB.getUserData()).use((Hero) fixA.getUserData());
                 break;
             case HeroWorld.FIREBALL_BIT | HeroWorld.ENEMY_BIT:
-                    Enemy.die();
+                if(fixA.getFilterData().categoryBits == HeroWorld.FIREBALL_BIT) {
+                    ((FireBall) fixA.getUserData()).setToDestroy();
+                    //Tao.die();
+                }else{
+                    ((FireBall) fixB.getUserData()).setToDestroy();
+                    //Tao.die();
+            }
+                break;
+            case HeroWorld.ENEMY_BIT | HeroWorld.GROUND_BIT :
+                if(fixA.getFilterData().categoryBits == HeroWorld.ENEMY_BIT)
+                    ((Enemy) fixA.getUserData()).reverseVelocity(true, false);
+                else
+                    ((Enemy)fixB.getUserData()).reverseVelocity(true,false);
                 break;
         }
 

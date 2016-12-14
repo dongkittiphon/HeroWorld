@@ -20,7 +20,7 @@ import com.dfy.heroworld.Sprites.Fire.FireBall;
  * Created by _iDong on 11/27/2016.
  */
 public class Hero extends Sprite {
-    public enum State{FALLING, JUMPING, STANDING, RUNNING, DIE};
+    public enum State{JUMPING, STANDING, RUNNING, DIE};
 
     public State currentState;
     public State previousState;
@@ -176,7 +176,7 @@ public class Hero extends Sprite {
 
         }
     }
-    
+
     public void draw(Batch batch){
         super.draw(batch);
         for(FireBall ball : fireballs)
