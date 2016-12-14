@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="36" tilewidth="8" tileheight="8" nextobjectid="19">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="36" tilewidth="8" tileheight="8" nextobjectid="56">
  <tileset firstgid="1" name="Background_Forestbb" tilewidth="8" tileheight="8" tilecount="1800" columns="50">
   <image source="Background_Forestbb.jpg" trans="000000" width="400" height="288"/>
  </tileset>
@@ -102,6 +102,35 @@
  </objectgroup>
  <objectgroup name="ground" offsetx="0" offsety="-0.666667">
   <object id="1" x="0.666667" y="272" width="398.667" height="16.6667"/>
+  <object id="28" x="400" y="-0.333333" width="1" height="270"/>
+  <object id="29" x="-3" y="-1.33333" width="2" height="276"/>
+  <object id="39" x="145" y="71.6667" height="15"/>
+  <object id="40" x="288" y="39.6667" height="9"/>
+  <object id="41" x="264" y="94.6667" height="14"/>
+  <object id="42" x="217" y="95.6667" height="13"/>
+  <object id="43" x="328" y="191.667" height="13"/>
+  <object id="44" x="96" y="215.667" height="16"/>
+  <object id="50" x="176" y="158.667" height="12"/>
+  <object id="51" x="239" y="159.667" height="8"/>
  </objectgroup>
- <objectgroup name="Object Layer 3"/>
+ <objectgroup name="crocodiel">
+  <object id="19" x="279.5" y="256.5" width="16.5" height="14.5"/>
+  <object id="20" x="49" y="200.333" width="14.8333" height="15.5"/>
+  <object id="53" x="506" y="110"/>
+ </objectgroup>
+ <objectgroup name="tao">
+  <object id="21" x="240" y="80" width="16" height="15"/>
+  <object id="22" x="192" y="144" width="16.5" height="15.5"/>
+ </objectgroup>
+ <objectgroup name="shell">
+  <object id="23" x="16" y="56.5" width="16" height="14.5"/>
+  <object id="24" x="296.5" y="24" width="14.6667" height="16"/>
+  <object id="25" x="367.5" y="176.333" width="16.6667" height="15.6667"/>
+ </objectgroup>
+ <objectgroup name="girl">
+  <object id="32" x="368" y="256.5" width="16" height="14"/>
+  <object id="34" x="360" y="24.5" width="16" height="16.5"/>
+  <object id="36" x="72.5" y="56" width="14.5" height="15"/>
+  <object id="38" x="216.667" y="80.6667" width="15.5" height="15"/>
+ </objectgroup>
 </map>

@@ -11,7 +11,8 @@ import com.dfy.heroworld.Screens.PlayScreen;
 import com.dfy.heroworld.Sprites.Enemies.Tao;
 import com.dfy.heroworld.Sprites.Enemies.mouse;
 import com.dfy.heroworld.Sprites.Enemies.shell;
-import com.dfy.heroworld.Sprites.Hero;
+import com.dfy.heroworld.Sprites.Item.Life;
+import com.dfy.heroworld.Sprites.Item.thor;
 
 /**
  * Created by _iDong on 12/1/2016.
@@ -20,6 +21,8 @@ public class B2WorldCreator {
     private Array<Tao> tao;
     private Array<mouse> mouse;
     private Array<shell> shell;
+    private Array<Life> Life;
+    private Array<thor> thor;
 
     public B2WorldCreator(PlayScreen screen) {
         World world = screen.getWorld();
@@ -72,7 +75,17 @@ public class B2WorldCreator {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             shell.add(new shell(screen, rect.getX() / HeroWorld.PPM, rect.getY() / HeroWorld.PPM));
         }
+        Life = new Array<Life>();
+        for(MapObject object : map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            Life.add(new Life(screen, rect.getX() / HeroWorld.PPM, rect.getY() / HeroWorld.PPM));
+        }
 
+        thor = new Array<thor>();
+        for(MapObject object : map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            thor.add(new thor(screen, rect.getX() / HeroWorld.PPM, rect.getY() / HeroWorld.PPM));
+        }
     }
 
     public Array<Tao> getTao() {
@@ -83,5 +96,11 @@ public class B2WorldCreator {
     }
     public Array<shell> getshell() {
         return shell;
+    }
+    public Array<Life> getLife() {
+        return Life;
+    }
+    public Array<thor> getthor() {
+        return thor;
     }
 }

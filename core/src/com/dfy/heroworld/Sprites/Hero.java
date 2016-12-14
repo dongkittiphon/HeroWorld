@@ -178,4 +178,8 @@ public class Hero extends Sprite {
             ball.draw(batch);
     }
 
+    public float getStateTimer(){
+        return stateTimer;
+    }
+
 }
