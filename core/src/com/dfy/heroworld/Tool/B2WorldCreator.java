@@ -5,14 +5,22 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.utils.Array;
 import com.dfy.heroworld.HeroWorld;
+import com.dfy.heroworld.Screens.PlayScreen;
+import com.dfy.heroworld.Sprites.Enemies.Tao;
 import com.dfy.heroworld.Sprites.Hero;
 
 /**
  * Created by _iDong on 12/1/2016.
  */
 public class B2WorldCreator {
-    public B2WorldCreator(World world, TiledMap map) {
+    private Array<Tao> tao;
+
+    public B2WorldCreator(PlayScreen screen) {
+        World world = screen.getWorld();
+        TiledMap map = screen.getMap();
+
         BodyDef bdef = new BodyDef();
         PolygonShape shape = new PolygonShape();
         FixtureDef fdef = new FixtureDef();
@@ -43,5 +51,16 @@ public class B2WorldCreator {
             fdef.shape = shape;
             body.createFixture(fdef);
         }
+
+        tao = new Array<Tao>();
+        for(MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            tao.add(new Tao(screen, rect.getX() / HeroWorld.PPM, rect.getY() / HeroWorld.PPM));
+        }
+
+    }
+
+    public Array<Tao> getTao() {
+        return tao;
     }
 }

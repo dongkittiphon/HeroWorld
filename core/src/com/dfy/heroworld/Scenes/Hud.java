@@ -20,9 +20,9 @@ import javafx.stage.Stage;
 public class Hud implements Disposable {
     public com.badlogic.gdx.scenes.scene2d.Stage stage;
     private Viewport viewport;
-    private Integer life;
+    private static Integer life;
 
-    Label lifeLable;
+    static Label lifeLable;
     Label leftlifeLable;
 
     public Hud(SpriteBatch sb){
@@ -47,8 +47,21 @@ public class Hud implements Disposable {
 
     }
 
+    public static void addLife(int value){
+        life += value;
+        lifeLable.setText(java.lang.String.format("x %1d",life));
+    }
+
     @Override
     public void dispose() {
         stage.dispose();
+    }
+
+    public static Integer getLife() {
+        return life;
+    }
+
+    public static void setLife(Integer life) {
+        Hud.life = life;
     }
 }

@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.dfy.heroworld.Screens.PlayScreen;
+import com.dfy.heroworld.Sprites.Fire.FireBall;
 import sun.security.provider.certpath.Vertex;
 
 /**
@@ -17,17 +18,20 @@ public abstract class Enemy extends Sprite {
     public Body b2body;
     public Vector2 velocity;
     private Rectangle boundsenemy;
+    private static boolean enemyIsdead;
 
     public  Enemy(PlayScreen screen,float x,float y){
         this.world=screen.getWorld();
         this.screen=screen;
         setPosition(x,y);
         defineEnemy();
-        velocity=new Vector2(0.6f,0);
+        velocity=new Vector2(0.3f,0);
         boundsenemy=new Rectangle(velocity.x,velocity.y,60,60);
     }
     protected abstract void defineEnemy();
     public  abstract  void  update(float dt);
+    public abstract void hitByFireball(FireBall fireBall);
+
 
     public void  reverseVelocity(boolean x,boolean y){
         if(x){

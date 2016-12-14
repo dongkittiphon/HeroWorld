@@ -16,14 +16,16 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.dfy.heroworld.HeroWorld;
 import com.dfy.heroworld.Scenes.Hud;
+import com.dfy.heroworld.Sprites.Enemies.Enemy;
 import com.dfy.heroworld.Sprites.Fire.FireBall;
 import com.dfy.heroworld.Sprites.Hero;
 import com.dfy.heroworld.Tool.B2WorldCreator;
+import com.dfy.heroworld.Tool.WorldContactListener;
 
 /**
  * Created by _iDong on 11/27/2016.
  */
-public class PlayScreen implements Screen {
+public class PlayScreen implements Screen{
     private HeroWorld game;
     private TextureAtlas atlas;
 
@@ -32,20 +34,18 @@ public class PlayScreen implements Screen {
     private Hud hud;
 
     private TmxMapLoader maploader;
-
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
 
     private World world;
     private Box2DDebugRenderer b2dr;
+    private B2WorldCreator creator;
 
     private Hero player;
 
 
     public PlayScreen(HeroWorld game) {
-        atlas = new TextureAtlas("heroworld.pack");
-
-
+        atlas = new TextureAtlas("sprites.pack");
         this.game = game;
 
         gamecam = new OrthographicCamera();
@@ -53,7 +53,7 @@ public class PlayScreen implements Screen {
         hud = new Hud(game.batch);
 
         maploader = new TmxMapLoader();
-        map = maploader.load("level2.tmx");
+        map = maploader.load("level1.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1/ HeroWorld.PPM);
 
         gamecam.position.set(gamePort.getWorldWidth()/ 2 , gamePort.getWorldHeight() / 2 ,0);
@@ -61,9 +61,13 @@ public class PlayScreen implements Screen {
         world = new World(new Vector2(0, -10), true);
         b2dr = new Box2DDebugRenderer();
 
-        new B2WorldCreator(world, map);
+        creator = new B2WorldCreator(this);
+
+        world.setContactListener(new WorldContactListener());
 
         player = new Hero(this);
+
+
 
 
     }
@@ -97,6 +101,12 @@ public class PlayScreen implements Screen {
         player.update(dt);
         //gamecam.position.x = player.b2body.getPosition().x;
         //gamecam.position.y = player.b2body.getPosition().y;
+        for( Enemy enemy : creator.getTao()) {
+            enemy.update(dt);
+            if(enemy.getX() < player.getX() + 224 / HeroWorld.PPM) {
+                enemy.b2body.setActive(true);
+            }
+        }
 
         gamecam.update();
         renderer.setView(gamecam);
@@ -116,8 +126,12 @@ public class PlayScreen implements Screen {
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
         player.draw(game.batch);
-        game.batch.end();
 
+
+        for(Enemy enemy : creator.getTao())
+            enemy.draw(game.batch);
+
+        game.batch.end();
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
 

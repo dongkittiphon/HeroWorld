@@ -29,17 +29,16 @@ public class FireBall extends Sprite {
 
     Body b2body;
     public FireBall(PlayScreen screen, float x, float y, boolean fireRight){
+
         this.fireRight = fireRight;
         this.screen = screen;
         this.world = screen.getWorld();
         frames = new Array<TextureRegion>();
+        frames.add(new TextureRegion(screen.getAtlas().findRegion("fireball"),0, 0, 8, 8));
 
-
-        for(int i = 0; i < 4; i++){
-            frames.add(new TextureRegion(screen.getAtlas().findRegion("boy"), i * 8, 0, 8, 8));
-        }
-        fireAnimation = new Animation(0.2f, frames);
+       fireAnimation = new Animation(0.2f, frames);
         setRegion(fireAnimation.getKeyFrame(0));
+
         setBounds(x, y, 6 / HeroWorld.PPM, 6 / HeroWorld.PPM);
         defineFireBall();
     }
@@ -59,13 +58,12 @@ public class FireBall extends Sprite {
         fdef.filter.maskBits = HeroWorld.GROUND_BIT |
                 HeroWorld.BRICK_BIT |
                 HeroWorld.ENEMY_BIT |
+                HeroWorld.FIREBALL_BIT|
                 HeroWorld.OBJECT_BIT;
 
         fdef.shape = shape;
         b2body.createFixture(fdef).setUserData(this);
-        //b2body.setAngularVelocity((fireRight ? 3.6f :-3.6f));
-       // b2body.applyLinearImpulse(new Vector2((fireRight ? 3.6f :-3.6f), 0), b2body.getWorldCenter(), true);
-        b2body.setLinearVelocity((fireRight ? 5f :-5f), 0);
+        b2body.setLinearVelocity((fireRight ? 2f :-2f), 0);
     }
 
     public void update(float dt){
@@ -76,6 +74,8 @@ public class FireBall extends Sprite {
             world.destroyBody(b2body);
             destroyed = true;
         }
+        if(b2body.getLinearVelocity().y > 2f)
+            b2body.setLinearVelocity(b2body.getLinearVelocity().x, 2f);
 
         if((fireRight && b2body.getLinearVelocity().x < 0) || (!fireRight && b2body.getLinearVelocity().x > 0))
             setToDestroy();

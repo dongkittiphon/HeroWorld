@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="36" tilewidth="8" tileheight="8" nextobjectid="8">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="36" tilewidth="8" tileheight="8" nextobjectid="14">
  <tileset firstgid="1" name="bg222" tilewidth="8" tileheight="8" tilecount="1800" columns="50">
   <image source="bg222.jpg" width="400" height="288"/>
  </tileset>
@@ -97,5 +97,11 @@
  <objectgroup name="ground">
   <object id="7" x="0" y="271.333" width="400" height="17.3333"/>
  </objectgroup>
- <objectgroup name="Object Layer 3"/>
+ <objectgroup name="Object Layer 3">
+  <object id="8" x="23.3333" y="192" width="16" height="15.3333"/>
+  <object id="10" x="296.333" y="63.6667" width="16" height="15.3333"/>
+  <object id="11" x="255.667" y="152.667" width="16" height="15.3333"/>
+  <object id="12" x="119.667" y="112.333" width="16" height="15.3333"/>
+  <object id="13" x="96" y="192.333" width="16" height="15.3333"/>
+ </objectgroup>
 </map>
