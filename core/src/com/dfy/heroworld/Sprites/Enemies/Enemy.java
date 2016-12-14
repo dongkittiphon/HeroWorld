@@ -25,20 +25,21 @@ public abstract class Enemy extends Sprite {
         this.screen=screen;
         setPosition(x,y);
         defineEnemy();
-        velocity=new Vector2(0.3f,0);
-        boundsenemy=new Rectangle(velocity.x,velocity.y,60,60);
+        velocity=new Vector2(0.6f,-1);
     }
+
     protected abstract void defineEnemy();
     public  abstract  void  update(float dt);
     public abstract void hitByFireball(FireBall fireBall);
+    public abstract void hitByEnemy(Enemy enemy);
 
 
     public void  reverseVelocity(boolean x,boolean y){
         if(x){
-            velocity.x=-velocity.x;
+            velocity.x = - velocity.x;
         }
         if (y){
-            velocity.y=-velocity.y;
+            velocity.y = - velocity.y;
         }
     }
 }
