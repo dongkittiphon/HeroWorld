@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
+import com.dfy.heroworld.Scenes.Hud;
 import com.dfy.heroworld.Screens.PlayScreen;
 import com.dfy.heroworld.Sprites.Fire.FireBall;
 import sun.security.provider.certpath.Vertex;
@@ -42,4 +43,7 @@ public abstract class Enemy extends Sprite {
             velocity.y = - velocity.y;
         }
     }
+   // protected abstract void use (FireBall fireBall);
+
+
 }

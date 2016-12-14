@@ -55,10 +55,10 @@ public class WorldContactListener implements ContactListener{
                     ((Item)fixB.getUserData()).use((Hero) fixA.getUserData());
                 break;
             case HeroWorld.FIREBALL_BIT | HeroWorld.ENEMY_BIT:
-                if (fixA.getFilterData().categoryBits==HeroWorld.ENEMY_BIT)
+               /* if (fixA.getFilterData().categoryBits==HeroWorld.ENEMY_BIT)
                     ((Enemy)fixA.getUserData()).use((Hero)fixB.getUserData());
                 else
-                    ((Enemy)fixB.getUserData()).use((Hero)fixA.getUserData());
+                    ((Enemy)fixB.getUserData()).use((Hero)fixA.getUserData());*/
 
                 break;
             case HeroWorld.ENEMY_BIT | HeroWorld.GROUND_BIT :

@@ -81,6 +81,11 @@ public class ufo extends  Enemy {
         setToDestroy = true;
         //เสียงตาย
     }
+    @Override
+    public void hitByEnemy(Enemy enemy) {
+        setToDestroy = true;
+        //เสียงตาย
+    }
 
     @Override
     public void reverseVelocity(boolean x, boolean y) {
